@@ -17,22 +17,22 @@ It shares the same backend as ImageBoard.
 ## Screenshots
 
 ### Login
-[](screenshots/login.JPG)
+[](./screenshots/login.JPG)
 
 ### Home/Threads management page in dark mode
-[](screenshots/home.JPG)
+[](./screenshots/home.JPG)
 
 ### Sidebar in dark mode
-[](screenshots/sidebar.JPG)
+[](./screenshots/sidebar.JPG)
 
 ### Sidebar plus posts selected for deletion in dark mode
-[](screenshots/sidebar%20plus%20delete.JPG)
+[](./screenshots/sidebar%20plus%20delete.JPG)
 
 ### Settings in dark mode
-[](screenshots/settings%20and%20dark%20mode.JPG)
+[](./screenshots/settings%20and%20dark%20mode.JPG)
 
 ### Settings in light mode
-[](screenshots/settings%20and%20light%20mode.JPG)
+[](./screenshots/settings%20and%20light%20mode.JPG)
 
 ### Comments management page in light mode
-[](screenshots/comments%20and%20light%20mode.JPG)
+[](./screenshots/comments%20and%20light%20mode.JPG)
