@@ -22,7 +22,7 @@ const getPostColumns = (darkMode) => {
             ),
         },
         { field: 'text', headerName: 'text', width: 220 },
-        { field: 'date', headerName: 'Date', width: 130 }
+        { field: 'date', headerName: 'Date', width: 220 }
     ];
 }
 
@@ -76,7 +76,8 @@ const DeleteDataGrid = ({ postType, darkMode }) => {
                     break
             }
             
-            data = data.data 
+            data = data.data
+            console.log('data from threads', data)
             data = formatData(data, postType)
             setDataLoaded(true)
             setRows(data)

@@ -28,7 +28,6 @@ export function useToken() {
     };
     
     const saveToken = (userToken, tokenStorageType) => {
-        // console.log('token saved', userToken)
         if(tokenStorageType === 'local')
             localStorage.setItem('token', JSON.stringify(userToken));
         else
@@ -37,7 +36,6 @@ export function useToken() {
     };
 
     const saveRefreshToken = (userToken, tokenStorageType) => {
-        // console.log('token saved', refreshToken)
         if(tokenStorageType === 'local')
             localStorage.setItem('refreshToken', JSON.stringify(userToken));
         else
@@ -48,10 +46,10 @@ export function useToken() {
     const removeTokens = () => {
         sessionStorage.removeItem('token')
         sessionStorage.removeItem('refreshToken')
+        
         localStorage.removeItem('token')
         localStorage.removeItem('refreshToken')
-        console.log('--------------------------')
-        console.log('tokens removed')
+        
         setToken(null)
         setRefreshToken(null)
     }
@@ -60,7 +58,6 @@ export function useToken() {
 
     const [token, setToken] = useState(getToken('token'));
     const [refreshToken, setRefreshToken] = useState(getToken('refreshToken'))
-    // console.log('token outside func', token)
 
 
   return {
@@ -82,7 +79,6 @@ export function getPermissions() {
         userToken = JSON.parse(tokenString)    
     }
 
-    console.log('token decoded', jwt_decode(userToken))
     const { permissions } = jwt_decode(userToken)
 
     return permissions
@@ -91,7 +87,6 @@ export function getPermissions() {
 export function getUsername() {
     const tokenString = sessionStorage.getItem('token');
     const userToken = JSON.parse(tokenString)
-    console.log('token decoded', jwt_decode(userToken))
     const { username } = jwt_decode(userToken)
 
     return username
@@ -100,27 +95,21 @@ export function getUsername() {
 // local storage
 export function useUserSettings() {
     const getSettings = () => {
-        // use getoken hook
         let settingsString = localStorage.getItem('settings');
         let settings = JSON.parse(settingsString);
 
-        // console.log('token in getSettings:', settings)
-        // console.log('token in getSettings plus data token:', userToken?.data.token)
         return settings
     };
 
     const [ settings, setSettings ] = useState(getSettings());
-    // console.log('settings outside func', settings)
 
     const saveSettings = async (newSettings) => {
         localStorage.setItem('settings', JSON.stringify({...settings, ...newSettings}));
-        // api call
         await adminService.updateSettings({settings: newSettings})
         setSettings(newSettings);
     };
 
     const initSettings = settings => {
-        console.log('settings in init:', settings)
         localStorage.setItem('settings', JSON.stringify({...settings}));
         setSettings(settings)
     }
@@ -128,8 +117,6 @@ export function useUserSettings() {
     // keep it, but settings are cleared in removeToken
     const removeSettings = () => {
         localStorage.removeItem('settings')
-        console.log('--------------------------')
-        console.log('settings removed')
         setSettings(null)
     }
 

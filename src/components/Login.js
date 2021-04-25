@@ -115,6 +115,7 @@ const Login = () => {
         try {
             const {data: {token, refreshToken, settings}} = await adminService.login({ username, password })
             const tokenStorageType = staySignedIn ? 'local' : 'session'
+            
             setToken(token, tokenStorageType)
             setRefreshToken(refreshToken, tokenStorageType)
             initSettings(settings)
@@ -123,14 +124,11 @@ const Login = () => {
                 history.push('/home')
         }
         catch(err) {
-            console.log(err)
-            console.log(err.response)
             if(err.response === undefined) {
                 setError('Can\'t connect to server')
             }
             else {
                 setError(err.response.data.error)
-                console.log('data error', err.response.data.error)
             }
         }
         setShowProgressBar(!showProgressBar)

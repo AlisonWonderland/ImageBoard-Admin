@@ -50,7 +50,6 @@ const Settings = ({ setDarkMode, darkMode }) => {
         confirmPassword: false
     })
     const [ error, setError ] = useState(null)
-    // const [ darkMode, setDarkMode ] = useState(false)
     const { setSettings } = useUserSettings()
     const { token } = useToken()
     const username = getUsername()
@@ -99,8 +98,6 @@ const Settings = ({ setDarkMode, darkMode }) => {
             }
         }
         catch(err) {
-            // console.log(err.response.data.currentPasswordError)
-            console.log('err in settings', err.response)
             if(err.response.data.currentPasswordError !== undefined) {
                 setPasswordErrors({newPassword: false, confirmPassword: false, currentPassword: true})
             }
@@ -132,8 +129,6 @@ const Settings = ({ setDarkMode, darkMode }) => {
         setSettings({darkMode: !darkMode})
         setDarkMode(!darkMode)
     }
-
-    console.log('dark mode', darkMode)
 
     return (
         <>  
