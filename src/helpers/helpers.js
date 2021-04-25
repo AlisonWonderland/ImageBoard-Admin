@@ -129,15 +129,32 @@ export function useUserSettings() {
 
 }
 
+const formatDate = (threadDate) => {
+    let localDate = new Date(threadDate).toLocaleDateString(undefined, {
+        month:'numeric', 
+        day:'numeric',
+        year: '2-digit', 
+        weekday:'short', 
+        hour:'numeric', 
+        minute: 'numeric',
+        second: 'numeric',
+        hour12: false
+    })
+
+    localDate = localDate.replace(/\s/g, ' ');
+    return localDate + ' '
+}
+
+
 export const formatData = (data, postType) => {
     if(postType === 'threads' || postType === 'comments') {
         return data.map(post => {
             return {
-                id: post.postNum,
-                postNum: post.postNum,
-                imageURL: post.url, 
-                text: post.text,
-                date: post.date
+                id: post.post_num,
+                postNum: post.post_num,
+                imageURL: post.post_url, 
+                text: post.post_text,
+                date: formatDate(post.post_date)
             }  
         })
     }
